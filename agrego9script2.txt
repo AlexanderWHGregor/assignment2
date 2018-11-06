@@ -48,3 +48,5 @@ UPDATE customer SET lastName="Man" WHERE lastName="Woman";
 SELECT * FROM customer;
 
 UPDATE product SET product.quantity = 5 WHERE product.productID IN (SELECT productID from purchases WHERE purchases.customerID IN (SELECT customerID FROM customer WHERE firstName = "Sideshow"));
+
+SELECT * FROM purchases
