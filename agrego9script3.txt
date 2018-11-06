@@ -1,0 +1,28 @@
+DESCRIBE product;
+DESCRIBE agent;
+DESCRIBE customer;
+DESCRIBE purchases;
+
+SELECT description FROM product;
+
+SELECT DISTINCT city FROM customer;
+
+SELECT * FROM agent ORDER BY agent.city;
+
+SELECT firstName, lastName FROM customer WHERE city = "Springfield";
+
+SELECT customer.lastName FROM customer WHERE customer.agentID IN (SELECT agent.agentID from agent WHERE agent.firstName = "Regis");
+
+SELECT description FROM product WHERE product.description LIKE "%pad%" OR product.description LIKE "%Pad%";
+
+SELECT customer.lastName, product.description, purchases.quantity FROM customer JOIN purchases ON customer.customerID = purchases.customerID JOIN product ON purchases.productID = product.productID;
+
+SELECT SUM(quantity) AS "Homer's total Purchases" FROM purchases WHERE purchases.customerID = (SELECT customer.customerID FROM customer WHERE customer.firstName = "Homer");
+
+SELECT product.description, product.quantity FROM product WHERE NOT EXISTS (SELECT purchases.productID FROM purchases WHERE product.productID = purchases.productID);
+
+SELECT agent.firstName AS "Agent First Name:", agent.lastName AS "Agent Last Name:", customer.firstName AS "Customer First Name:", customer.lastName AS "Customer Last Name:" FROM agent JOIN customer ON agent.city = customer.city AND customer.agentID = agent.agentID;
+
+SELECT SUM(quantity) AS "Amount of Knee Pads bought" FROM purchases WHERE purchases.productID = (SELECT product.productID FROM product WHERE product.description = "Knee Pads");
+
+SELECT agent.firstName, agent.lastName FROM agent JOIN customer ON customer.agentID = agent.agentID JOIN purchases ON purchases.customerID = customer.customerID;
