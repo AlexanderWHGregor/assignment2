@@ -38,7 +38,7 @@ CREATE TABLE customer(
         agentID CHAR(2),
         FOREIGN KEY (agentID) REFERENCES product(agentID));
 	UNIQUE (customerID),
-	PRIMARY KEY (customerID)
+	PRIMARY KEY (customerID));
 
 CREATE TABLE purchases(
 	productID CHAR(2) NOT NULL, 
