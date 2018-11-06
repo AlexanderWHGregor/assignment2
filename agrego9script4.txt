@@ -1,0 +1,21 @@
+USE agrego9assign2db;
+
+SELECT * FROM product;
+
+SELECT * FROM customer;
+
+SELECT * FROM purchases;
+
+SELECT * FROM agent;
+
+CREATE VIEW viewPurchase AS SELECT customer.firstName AS "customer first name", customer.lastName AS "customer last name", product.description, purchases.quantity, purchases.quantity * product.cost AS "cost of order" FROM customer INNER JOIN purchases ON purchases.customerID = customer.customerID INNER JOIN product ON product.productID = purchases.productID ORDER BY customer.lastName;
+
+SELECT * FROM viewPurchase;
+
+SELECT * FROM viewPurchase WHERE "cost of order" > 100;
+
+DELETE FROM product WHERE description = "Bicycle";
+
+SELECT * FROM product;
+
+DELETE FROM agent WHERE agent.city = "Springfield";
