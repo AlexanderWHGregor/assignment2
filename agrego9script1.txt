@@ -35,6 +35,7 @@ CREATE TABLE customer(
 	lastName CHAR(30) NOT NULL, 
 	city CHAR(15) NOT NULL,
 	phoneNumber CHAR(8) NOT NULL,
+        agentID CHAR(2),
         FOREIGN KEY (agentID) REFERENCES product(agentID));
 	UNIQUE (customerID),
 	PRIMARY KEY (customerID)
